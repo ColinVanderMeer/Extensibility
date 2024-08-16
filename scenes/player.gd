@@ -1,6 +1,6 @@
 extends CharacterBody3D
 
-@export var  SPEED = 5.0
+@export var  SPEED = 6.0
 const JUMP_VELOCITY = 4.5
 @export var sensivity = 0.1
 var fov = false
