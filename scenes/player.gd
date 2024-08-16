@@ -12,6 +12,8 @@ var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 @onready var _raycast := $CameraPivot/Camera3D/RayCast3D
 @onready var _holdPos := $CameraPivot/Camera3D/HoldPos
+var picked_object
+var pullPower = 4.5
 
 
 func _ready():
@@ -27,8 +29,10 @@ func _input(event):
 		rotation_degrees.y -= event.relative.x * sensivity
 
 	if Input.is_action_just_pressed("interact"):
-		print("buttons")
-		interact_object()
+		if picked_object == null:
+			interact_object()
+		else:
+			picked_object = null
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -51,9 +55,14 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+	
+	if picked_object != null:
+		var a = picked_object.global_transform.origin
+		var b = _holdPos.global_transform.origin
+		picked_object.set_linear_velocity((b-a)*pullPower)
 
 func interact_object():
 	var collider = _raycast.get_collider()
 	print(collider)
 	if collider != null and collider is RigidBody3D:
-		print("Colliding with rigidbody")
+		picked_object = collider
