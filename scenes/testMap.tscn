@@ -82,6 +82,8 @@ sky_material = SubResource("ProceduralSkyMaterial_jbqx1")
 [sub_resource type="Environment" id="Environment_f4d0q"]
 background_mode = 2
 sky = SubResource("Sky_78psh")
+ambient_light_source = 3
+ambient_light_color = Color(0.847409, 0.909643, 0.915934, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_mvxl7"]
 
@@ -100,6 +102,7 @@ default_material = SubResource("StandardMaterial3D_pga7c")
 [node name="entity_0_worldspawn" type="StaticBody3D" parent="QodotMap"]
 
 [node name="entity_0_mesh_instance" type="MeshInstance3D" parent="QodotMap/entity_0_worldspawn"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00212145, -0.00941193, 5.19753e-05)
 mesh = SubResource("ArrayMesh_jcq1i")
 
 [node name="entity_0_occluder_instance" type="OccluderInstance3D" parent="QodotMap/entity_0_worldspawn"]

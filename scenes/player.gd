@@ -27,6 +27,7 @@ func _input(event):
 		rotation_degrees.y -= event.relative.x * sensivity
 
 	if Input.is_action_just_pressed("interact"):
+		print("buttons")
 		interact_object()
 
 func _physics_process(delta):
@@ -53,5 +54,6 @@ func _physics_process(delta):
 
 func interact_object():
 	var collider = _raycast.get_collider()
+	print(collider)
 	if collider != null and collider is RigidBody3D:
 		print("Colliding with rigidbody")
