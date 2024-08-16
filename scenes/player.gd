@@ -10,6 +10,10 @@ var lerp_speed= 1
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
 
+@onready var _raycast := $CameraPivot/Camera3D/RayCast3D
+@onready var _holdPos := $CameraPivot/Camera3D/HoldPos
+
+
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
@@ -21,6 +25,9 @@ func _input(event):
 		$CameraPivot.rotation_degrees.x -= event.relative.y * sensivity
 		$CameraPivot.rotation_degrees.x = clamp($CameraPivot.rotation_degrees.x, -90, 90)
 		rotation_degrees.y -= event.relative.x * sensivity
+
+	if Input.is_action_just_pressed("interact"):
+		interact_object()
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -43,3 +50,8 @@ func _physics_process(delta):
 		velocity.z = move_toward(velocity.z, 0, SPEED)
 
 	move_and_slide()
+
+func interact_object():
+	var collider = _raycast.get_collider()
+	if collider != null and collider is RigidBody3D:
+		print("Colliding with rigidbody")

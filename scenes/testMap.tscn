@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=4 uid="uid://bqvbj6t5l4eey"]
+[gd_scene load_steps=28 format=4 uid="uid://bqvbj6t5l4eey"]
 
 [ext_resource type="Script" path="res://addons/qodot/src/nodes/qodot_map.gd" id="1_lv2u6"]
 [ext_resource type="Resource" uid="uid://c36hv0o6g0udo" path="res://addons/qodot/game_definitions/fgd/qodot_fgd.tres" id="2_h5nq7"]
@@ -83,6 +83,10 @@ sky_material = SubResource("ProceduralSkyMaterial_jbqx1")
 background_mode = 2
 sky = SubResource("Sky_78psh")
 
+[sub_resource type="SphereMesh" id="SphereMesh_mvxl7"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_eps8r"]
+
 [node name="Node3D" type="Node3D"]
 
 [node name="QodotMap" type="Node3D" parent="."]
@@ -151,3 +155,12 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00583649, 0.29806, 3.45362)
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_f4d0q")
+
+[node name="RigidBody3D" type="RigidBody3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.91289, 1.01981, 5.25897)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="RigidBody3D"]
+mesh = SubResource("SphereMesh_mvxl7")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="RigidBody3D"]
+shape = SubResource("SphereShape3D_eps8r")
