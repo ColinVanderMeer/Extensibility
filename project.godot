@@ -14,6 +14,14 @@ config/name="Extensibility"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 
+[dotnet]
+
+project/assembly_name="Extensibility"
+
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/qodot/plugin.cfg")
+
 [input]
 
 forward={

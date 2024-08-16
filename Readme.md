@@ -6,7 +6,7 @@ Platformer that you have to play through three times
    - Base movement
    - Can pick up / move boxes
    - Push buttons to move catwalks or smth?
-     - Stop conveyor belts for small
+	 - Stop conveyor belts for small
    - Level is "designed" for this scale
  - Scale 1/3
    - Moves through "mouse like holes" / vents
