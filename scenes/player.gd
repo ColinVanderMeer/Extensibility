@@ -43,6 +43,12 @@ func _input(event):
 					picked_object = null
 			SIZE.Big:
 				pass
+	if Input.is_physical_key_pressed(KEY_1):
+		playerSize = SIZE.Small
+	if Input.is_physical_key_pressed(KEY_2):
+		playerSize = SIZE.Normal
+	if Input.is_physical_key_pressed(KEY_3):
+		playerSize = SIZE.Big
 
 func _physics_process(delta):
 	# Add the gravity.
