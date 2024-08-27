@@ -1,13 +1,13 @@
 extends CharacterBody3D
 
 @export var  SPEED = 6.0
-const JUMP_VELOCITY = 4.5
+var JUMP_VELOCITY = 5
 @export var sensivity = 0.1
 var fov = false
 var lerp_speed= 1
 
 enum SIZE { Small, Normal, Big }
-@export var playerSize: SIZE
+@export var playerSize: SIZE = SIZE.Normal
 
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -55,12 +55,15 @@ func _physics_process(delta):
 	match playerSize:
 		SIZE.Small:
 			SPEED = 2.0
+			JUMP_VELOCITY = 3
 			self.scale = Vector3(0.3, 0.3, 0.3)
 		SIZE.Normal:
 			SPEED = 6.0
+			JUMP_VELOCITY = 5
 			self.scale = Vector3(1, 1, 1)
 		SIZE.Big:
 			SPEED = 18.0
+			JUMP_VELOCITY = 8
 			self.scale = Vector3(3, 3, 3)
 
 	# Get the input direction and handle the movement/deceleration.
