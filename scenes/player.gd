@@ -6,6 +6,9 @@ const JUMP_VELOCITY = 4.5
 var fov = false
 var lerp_speed= 1
 
+enum SIZE { Small, Normal, Big }
+@export var playerSize: SIZE
+
 # Get the gravity from the project settings to be synced with RigidBody nodes.
 var gravity = ProjectSettings.get_setting("physics/3d/default_gravity")
 
@@ -29,10 +32,16 @@ func _input(event):
 		rotation_degrees.y -= event.relative.x * sensivity
 
 	if Input.is_action_just_pressed("interact"):
-		if picked_object == null:
-			interact_object()
-		else:
-			picked_object = null
+		match playerSize:
+			SIZE.Small:
+				pass
+			SIZE.Normal:	
+				if picked_object == null:
+					pick_up_object()
+				else:
+					picked_object = null
+			SIZE.Big:
+				pass
 
 func _physics_process(delta):
 	# Add the gravity.
@@ -61,7 +70,7 @@ func _physics_process(delta):
 		var b = _holdPos.global_transform.origin
 		picked_object.set_linear_velocity((b-a)*pullPower)
 
-func interact_object():
+func pick_up_object():
 	var collider = _raycast.get_collider()
 	print(collider)
 	if collider != null and collider is RigidBody3D:
