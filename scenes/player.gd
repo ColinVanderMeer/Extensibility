@@ -54,7 +54,7 @@ func _physics_process(delta):
 		
 	match playerSize:
 		SIZE.Small:
-			SPEED = 2.0
+			SPEED = 3.0
 			JUMP_VELOCITY = 3
 			self.scale = Vector3(0.3, 0.3, 0.3)
 		SIZE.Normal:
@@ -62,7 +62,7 @@ func _physics_process(delta):
 			JUMP_VELOCITY = 5
 			self.scale = Vector3(1, 1, 1)
 		SIZE.Big:
-			SPEED = 18.0
+			SPEED = 15.0
 			JUMP_VELOCITY = 8
 			self.scale = Vector3(3, 3, 3)
 
