@@ -42,7 +42,7 @@ func _input(event):
 					picked_object.collision_layer = 1
 					picked_object = null
 			SIZE.Big:
-				pass
+				break_wall()
 	if Input.is_physical_key_pressed(KEY_1):
 		playerSize = SIZE.Small
 	if Input.is_physical_key_pressed(KEY_2):
@@ -97,3 +97,9 @@ func pick_up_object():
 	if collider != null and collider is RigidBody3D:
 		picked_object = collider
 		picked_object.collision_layer = 0
+		
+func break_wall():
+	var collider = _raycast.get_collider()
+	print(collider)
+	if collider != null and collider is StaticBody3D and collider.collision_layer == 3:
+		collider.queue_free()
