@@ -39,6 +39,7 @@ func _input(event):
 				if picked_object == null:
 					pick_up_object()
 				else:
+					picked_object.collision_layer = 1
 					picked_object = null
 			SIZE.Big:
 				pass
@@ -89,3 +90,4 @@ func pick_up_object():
 	print(collider)
 	if collider != null and collider is RigidBody3D:
 		picked_object = collider
+		picked_object.collision_layer = 0
