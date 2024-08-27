@@ -196,6 +196,9 @@ shape = SubResource("ConvexPolygonShape3D_arwdk")
 
 [node name="Player" parent="." instance=ExtResource("5_hx8uw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00583649, 0.29806, 3.45362)
+SPEED = 6.0
+sensivity = 0.1
+playerSize = 1
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_f4d0q")
